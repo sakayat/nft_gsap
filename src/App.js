@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Creators from './components/Creators';
+import Footer from './components/Footer';
+import Home from './components/Home';
+import MarketPlaces from './components/MarketPlaces';
 
-function App() {
+import Navbar from './components/Navbar';
+import { useSmoothScroll } from './hooks/useSmoothScroll';
+
+const App = () => {
+  useSmoothScroll()
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar/>
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/marketplace' element={<MarketPlaces/>}/>
+        <Route path='/creators' element={<Creators />}/>
+      </Routes>
+      <Footer/>
     </div>
   );
-}
+};
 
 export default App;
